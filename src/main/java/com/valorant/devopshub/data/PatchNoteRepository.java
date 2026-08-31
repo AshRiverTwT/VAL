@@ -9,7 +9,8 @@ import com.valorant.devopshub.model.PatchNote;
 /**
  * Sample patch note content for the /patch-notes page. This is illustrative
  * data written for this DevOps lab project - it is not real VALORANT patch
- * data and should be labeled as such in the UI.
+ * notes and is okay for demonstration purposes only.
+ * Data and should be labeled as such in the UI.
  */
 @Repository
 public class PatchNoteRepository {
