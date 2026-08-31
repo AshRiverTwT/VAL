@@ -1,0 +1,52 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # APP_IMAGE_TAG lets scripts/deploy.sh and scripts/rollback.sh switch
+    # between builds (e.g. by BUILD_NUMBER) without editing this file.
+    image: valorant-devops-app:${APP_IMAGE_TAG:-local}
+    container_name: valorant-app
+    restart: unless-stopped
+    # The app's port is NOT published to the host here - only Nginx is
+    # exposed externally. The two containers talk over the internal
+    # "valorant-net" network on the container's own port 8080. This mirrors
+    # the intended production layout: Internet -> Nginx:80 -> app:8080.
+    expose:
+      - "8080"
+    environment:
+      SERVER_PORT: "8080"
+      APP_ENV: "${APP_ENV:-docker}"
+      APP_VERSION: "${APP_VERSION:-}"
+      BUILD_NUMBER: "${BUILD_NUMBER:-local}"
+      GIT_COMMIT: "${GIT_COMMIT:-unknown}"
+      SPRING_PROFILES_ACTIVE: "${SPRING_PROFILES_ACTIVE:-prod}"
+    volumes:
+      - ./docker/data/logs:/app/logs
+    networks:
+      - valorant-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: valorant-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/data/nginx-logs:/var/log/nginx
+    depends_on:
+      app:
+        condition: service_healthy
+    networks:
+      - valorant-net
+
+networks:
+  valorant-net:
+    driver: bridge

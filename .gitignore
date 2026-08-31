@@ -1,0 +1,40 @@
+# ===== Maven =====
+target/
+*.class
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== IDE =====
+.idea/
+*.iml
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+*.swp
+*.swo
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Environment / secrets - NEVER commit these =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# ===== Build / deployment artifacts produced on the server =====
+scripts/backups/
+deploy/current/
+deploy/previous/
+*.pid
+
+# ===== Docker =====
+docker/data/

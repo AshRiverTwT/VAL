@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weapons - VALORANT Tactical Hub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav id="navbar"></nav>
+  </header>
+
+  <main>
+    <section class="hero" style="padding:48px 0 36px;">
+      <div class="container">
+        <p class="eyebrow">Armory</p>
+        <h1>Weapons</h1>
+        <p class="lead">Full weapon stats: price, damage range, fire rate and magazine size.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Weapon</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Damage</th>
+                <th>Fire Rate</th>
+                <th>Magazine</th>
+              </tr>
+            </thead>
+            <tbody id="weaponTableBody">
+              <tr><td colspan="6" class="loading-text">Loading weapons&hellip;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div id="footer"></div>
+  </footer>
+
+  <script src="/js/layout.js"></script>
+  <script src="/js/weapons.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALORANT Tactical Hub</title>
+  <meta name="description" content="A fan-made VALORANT information hub used as a hands-on DevOps L1 practice project.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav id="navbar"></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">DevOps Practice Lab</p>
+        <h1>VALORANT Tactical Hub</h1>
+        <p class="lead">
+          A polished, static VALORANT-themed information site used to practice real DevOps L1 skills:
+          Git, Maven, Docker, Nginx, systemd, Jenkins CI/CD and AWS EC2 &mdash; end to end, on one server.
+        </p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="/agents.html">Browse Agents</a>
+          <a class="btn btn-secondary" href="/about.html">About this Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="value">12</div>
+            <div class="label">Agents</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">6</div>
+            <div class="label">Maps</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">14</div>
+            <div class="label">Weapons</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">100%</div>
+            <div class="label">DevOps Lab Ready</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Featured Agents</h2>
+          <a class="see-all" href="/agents.html">See all agents &rarr;</a>
+        </div>
+        <div class="grid" id="featuredAgents">
+          <p class="loading-text">Loading agents&hellip;</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Featured Maps</h2>
+          <a class="see-all" href="/maps.html">See all maps &rarr;</a>
+        </div>
+        <div class="grid" id="featuredMaps">
+          <p class="loading-text">Loading maps&hellip;</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Latest Patch</h2>
+          <a class="see-all" href="/patch-notes.html">All patch notes &rarr;</a>
+        </div>
+        <div id="latestPatch">
+          <p class="loading-text">Loading patch notes&hellip;</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div id="footer"></div>
+  </footer>
+
+  <script src="/js/layout.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

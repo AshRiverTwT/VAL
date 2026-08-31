@@ -1,0 +1,4 @@
+# Local development overrides. Activated with SPRING_PROFILES_ACTIVE=dev (the default).
+logging:
+  level:
+    com.valorant.devopshub: DEBUG

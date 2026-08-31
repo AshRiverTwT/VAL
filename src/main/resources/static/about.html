@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - VALORANT Tactical Hub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav id="navbar"></nav>
+  </header>
+
+  <main>
+    <section class="hero" style="padding:48px 0 36px;">
+      <div class="container">
+        <p class="eyebrow">About</p>
+        <h1>About This Project</h1>
+        <p class="lead">A DevOps L1 practice lab disguised as a VALORANT fan site.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container prose">
+        <h2>What is this?</h2>
+        <p>
+          VALORANT Tactical Hub is a small, deliberately simple Java web application. Its real purpose isn't
+          the website itself &mdash; it's everything <em>around</em> the website: version control with Git,
+          building with Maven, packaging into a runnable JAR, containerizing with Docker, serving through
+          Nginx, running as a Linux service with systemd, and automating the whole pipeline with Jenkins on
+          an AWS EC2 Ubuntu instance.
+        </p>
+        <p>
+          Every DevOps concept below has a genuine reason to exist in this project &mdash; nothing here is
+          included "just for show". See <a href="https://github.com" target="_blank" rel="noopener">the
+          project README</a> in the repository for full setup instructions, practice labs, a troubleshooting
+          workbook, and an interview-question bank.
+        </p>
+        <p>
+          Agent, map and weapon artwork is intentionally <strong>not</strong> reproduced here. Instead, each
+          entity is rendered with a generated color badge, so the project stays focused on data and DevOps
+          rather than licensed game assets. This site is a non-commercial, fan-made practice project and is
+          not affiliated with or endorsed by Riot Games.
+        </p>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>DevOps Infrastructure</h2>
+        </div>
+        <p class="section-sub">
+          These values are read live from the running application's configuration and environment variables
+          (via the <code>/info</code> endpoint) &mdash; they are not hardcoded, so they change automatically
+          between your laptop, a Docker container, and EC2.
+        </p>
+        <div class="info-grid" id="infoGrid">
+          <p class="loading-text">Loading runtime information&hellip;</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div id="footer"></div>
+  </footer>
+
+  <script src="/js/layout.js"></script>
+  <script src="/js/about.js"></script>
+</body>
+</html>

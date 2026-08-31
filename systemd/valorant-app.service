@@ -1,0 +1,39 @@
+[Unit]
+Description=VALORANT Tactical Hub (DevOps lab application)
+# Wait for basic networking before starting - this app serves HTTP.
+After=network.target
+
+[Service]
+Type=simple
+
+# Runs as a dedicated, unprivileged user (create with:
+#   sudo useradd --system --no-create-home --shell /usr/sbin/nologin valorant
+User=valorant
+Group=valorant
+
+# Where the deployed jar and any relative logs live. deploy.sh (systemd mode)
+# maintains /opt/valorant-devops-app/current as a symlink to the active
+# release directory, so this path never has to change between deploys.
+WorkingDirectory=/opt/valorant-devops-app/current
+
+# Non-secret configuration lives here; see config/app.env.example.
+# This file must exist on the server (it is intentionally NOT committed).
+EnvironmentFile=-/opt/valorant-devops-app/config/app.env
+
+ExecStart=/usr/bin/java -jar /opt/valorant-devops-app/current/valorant-devops-app.jar
+
+# Restart policy: the whole point of running this under systemd instead of
+# a bare `java -jar` in a terminal is that systemd will bring the process
+# back after a crash without any human intervention.
+Restart=on-failure
+RestartSec=5
+
+# Send stdout/stderr to the journal so `journalctl -u valorant-app` shows
+# the same application logs as `docker logs valorant-app` would in the
+# container deployment.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=valorant-app
+
+[Install]
+WantedBy=multi-user.target

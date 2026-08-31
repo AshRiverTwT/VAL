@@ -1,0 +1,13 @@
+target/
+.git/
+.gitignore
+.idea/
+*.iml
+docs/
+README.md
+scripts/
+systemd/
+nginx/
+*.md
+.env
+.env.*

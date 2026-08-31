@@ -1,0 +1,35 @@
+# =========================================================================
+# Core application configuration.
+#
+# Every value that changes between environments (dev / docker / prod on EC2)
+# is externalized as an environment variable with a sensible local default,
+# e.g. ${APP_ENV:development}. This is the "12-factor config" pattern:
+# the same JAR / image runs anywhere, only the environment changes.
+# =========================================================================
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: valorant-devops-app
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+# Custom application metadata, bound to app.* via AppInfoProperties.
+# APP_VERSION overrides the Maven build version when explicitly set
+# (useful for hotfix/rollback scenarios where you redeploy an older jar
+# but still want the version label to reflect what's really running).
+app:
+  env: ${APP_ENV:development}
+  version: ${APP_VERSION:}
+  build-number: ${BUILD_NUMBER:local}
+  git-commit: ${GIT_COMMIT:unknown}
+
+logging:
+  level:
+    root: INFO
+    com.valorant.devopshub: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ${LOG_FILE:logs/valorant-devops-app.log}

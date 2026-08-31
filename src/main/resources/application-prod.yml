@@ -1,0 +1,6 @@
+# Production overrides used on EC2 / in the Docker container.
+# Activate with: SPRING_PROFILES_ACTIVE=prod
+logging:
+  level:
+    root: WARN
+    com.valorant.devopshub: INFO

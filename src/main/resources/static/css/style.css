@@ -1,0 +1,563 @@
+/* =========================================================================
+   VALORANT Tactical Hub - design system
+   A dark, high-contrast esports look built from a small set of CSS
+   variables. Intentionally original (not a copy of Riot's UI kit).
+   ========================================================================= */
+
+:root {
+  --color-bg: #0f1216;
+  --color-bg-alt: #161b22;
+  --color-surface: #1b2129;
+  --color-border: #2a323d;
+  --color-primary: #ff4655;
+  --color-primary-dark: #d6303e;
+  --color-accent: #53d2c4;
+  --color-text: #ece8e1;
+  --color-text-muted: #9aa4b2;
+  --radius: 10px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --max-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a2029 0%, var(--color-bg) 55%);
+  color: var(--color-text);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  letter-spacing: 0.3px;
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--color-text-muted);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+  background: var(--color-surface);
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 1.2rem;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+header.site-header {
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(15, 18, 22, 0.85);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 72px 0 56px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(255, 70, 85, 0.08), transparent 60%);
+}
+
+.hero .eyebrow {
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  margin: 16px 0;
+  letter-spacing: 0.5px;
+}
+
+.hero p.lead {
+  max-width: 640px;
+  margin: 0 auto 28px;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* ---------- Sections ---------- */
+section {
+  padding: 56px 0;
+}
+
+section.alt {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.section-heading h2 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.section-heading .see-all {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.section-sub {
+  color: var(--color-text-muted);
+  margin-top: -16px;
+  margin-bottom: 26px;
+  max-width: 720px;
+}
+
+/* ---------- Grids & cards ---------- */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.map-tile {
+  width: 100%;
+  height: 90px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 70, 85, 0.15);
+  color: var(--color-primary);
+  border: 1px solid rgba(255, 70, 85, 0.4);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.badge.alt {
+  background: rgba(83, 210, 196, 0.12);
+  color: var(--color-accent);
+  border-color: rgba(83, 210, 196, 0.4);
+}
+
+.card p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin: 8px 0;
+}
+
+.meta-row {
+  display: flex;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.ability-list {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.ability-list li {
+  margin-bottom: 4px;
+}
+
+.ability-list b {
+  color: var(--color-text);
+}
+
+/* ---------- Stat cards (home page) ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+}
+
+.stat-card .value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.stat-card .label {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* ---------- Tables (weapons) ---------- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+thead th {
+  text-align: left;
+  background: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.92rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ---------- Patch notes ---------- */
+.patch-entry {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 22px;
+}
+
+.patch-entry h3 {
+  margin: 0 0 4px;
+}
+
+.patch-entry .patch-date {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+.patch-section h4 {
+  margin: 16px 0 6px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-accent);
+}
+
+.patch-section ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Info / DevOps panel ---------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.info-item .info-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--color-text-muted);
+}
+
+.info-item .info-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+.info-value.pending {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-pill.up {
+  background: rgba(83, 210, 196, 0.15);
+  color: var(--color-accent);
+}
+
+.status-pill.down {
+  background: rgba(255, 70, 85, 0.15);
+  color: var(--color-primary);
+}
+
+/* ---------- Prose (about page) ---------- */
+.prose {
+  max-width: 760px;
+}
+
+.prose h2 {
+  margin-top: 0;
+}
+
+.prose p {
+  color: var(--color-text-muted);
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  margin-top: auto;
+  padding: 26px 20px;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.footer-meta {
+  margin-top: 6px;
+  font-size: 0.78rem;
+}
+
+/* ---------- Utility ---------- */
+.loading-text {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.error-text {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+main {
+  flex: 1;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 780px) {
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    padding: 10px 20px;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  header.site-header {
+    position: relative;
+  }
+}
